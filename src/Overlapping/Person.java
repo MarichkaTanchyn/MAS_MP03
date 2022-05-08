@@ -34,7 +34,7 @@ public class Person {
         this.persons.add(PersonType.Employee);
 
     }
-
+    // resident & employee (2 in 1)
     public Person(long id, String firstName, String lastName, int apartmentNumber, String profession) {
         this.id = id;
         this.firstName = firstName;
@@ -95,6 +95,9 @@ public class Person {
     }
 
     public void setApartmentNumber(int apartmentNumber) {
+        if (apartmentNumber <=0) {
+            throw new IllegalArgumentException("Apartment number can't be smaller or be 0");
+        }
         this.apartmentNumber = apartmentNumber;
     }
 
@@ -103,9 +106,11 @@ public class Person {
     }
 
     public void setProfession(String profession) {
+        if (profession == null || profession.trim().equals("")) {
+            throw new IllegalArgumentException("Profession cannot be null or empty.");
+        }
         this.profession = profession;
     }
-    //TODO: setters jakos inicializuwaty
 
     public EnumSet<PersonType> getPersons() {
         return persons;

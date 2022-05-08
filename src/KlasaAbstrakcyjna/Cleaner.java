@@ -19,6 +19,15 @@ public class Cleaner extends Person {
     }
 
     public void setNumberOfEntrancesForCleaning(int numberOfEntrancesForCleaning) {
+        if (numberOfEntrancesForCleaning < 0) {
+            throw new IllegalArgumentException("Number of entrances for cleaning can't be smaller than 0");
+        }
         this.numberOfEntrancesForCleaning = numberOfEntrancesForCleaning;
+    }
+
+    @Override
+    public String toString() {
+        return "Cleaner " + super.toString() +
+                " numberOfEntrancesForCleaning=" + numberOfEntrancesForCleaning;
     }
 }

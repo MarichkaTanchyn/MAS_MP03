@@ -19,6 +19,15 @@ public class Gardener extends Person {
     }
 
     public void setAreaOfTerritory(int areaOfTerritory) {
+        if (areaOfTerritory < 0) {
+            throw new IllegalArgumentException("Area of territory can't be smaller than 0");
+        }
         this.areaOfTerritory = areaOfTerritory;
+    }
+
+    @Override
+    public String toString() {
+        return "Gardener " + super.toString() +
+                " areaOfTerritory=" + areaOfTerritory;
     }
 }

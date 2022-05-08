@@ -18,6 +18,15 @@ public class Security extends Person {
     }
 
     public void setNumberOfGuardedHouses(int numberOfGuardedHouses) {
+        if (numberOfGuardedHouses <0) {
+            throw new IllegalArgumentException("Number of guarded houses can't be smaller than 0");
+        }
         this.numberOfGuardedHouses = numberOfGuardedHouses;
+    }
+
+    @Override
+    public String toString() {
+        return "Security " + super.toString() + " " +
+                "numberOfGuardedHouses=" + numberOfGuardedHouses;
     }
 }

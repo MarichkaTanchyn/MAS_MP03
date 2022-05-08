@@ -14,10 +14,11 @@ public abstract class House {
     private String name;
     private LocalDateTime dateOfStartBuilding;
     private HouseAddress houseAddress;
+    private double area;
     private static Set<House> houses = new HashSet<>();//ekstensja
 
 
-    public House(long id, String name, LocalDateTime dateOfStartBuilding, HouseAddress houseAddress) {
+    public House(long id, String name, LocalDateTime dateOfStartBuilding, HouseAddress houseAddress, double area) {
         setId(id);
         setName(name);
         setDateOfStartBuilding(dateOfStartBuilding);
@@ -26,6 +27,12 @@ public abstract class House {
     }
 
     public abstract LocalDateTime getDateOfSale();
+
+    public abstract void stopBeingOneFamilyHouse() throws Exception;
+    public abstract OneFamilyHouse startBeOneFamilyHouse() throws Exception;
+
+    public abstract void stopBeingApartmentBuilding() throws Exception;
+    public abstract ApartmentBuilding startBeApartmentBuilding() throws Exception;
 
     private static void addHouse(House house) throws IllegalArgumentException {
         if (house == null) {
@@ -87,6 +94,17 @@ public abstract class House {
     //Getters
     public long  getId() {
         return id;
+    }
+
+    public double getArea() {
+        return area;
+    }
+
+    public void setArea(double area) {
+        if (area <= 0) {
+            throw new IllegalArgumentException("Area cannot be 0 or smaller than 0.");
+        }
+        this.area = area;
     }
 
     public String getName() {
