@@ -24,3 +24,6 @@ With Attribute
 
 
 <img width="595" alt="Screenshot 2022-05-27 at 19 49 23" src="https://user-images.githubusercontent.com/65307654/170764184-4d04ee56-99ae-4929-9f59-bcadb85e5221.png">
+
+
+Multiaspect - bad business idea
