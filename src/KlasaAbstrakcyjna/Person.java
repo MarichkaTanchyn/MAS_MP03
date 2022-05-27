@@ -6,7 +6,6 @@ public abstract class Person {
     private String lastName;
 
     public Person(long id, String firstName, String lastName) {
-        super();
         setId(id);
         setFirstName(firstName);
         setLastName(lastName);

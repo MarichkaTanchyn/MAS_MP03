@@ -16,6 +16,13 @@ public class Person {
 
     private EnumSet<PersonType> persons = EnumSet.of(PersonType.Person);
 
+    // person
+    public Person(long id, String firstName, String lastName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.persons.add(PersonType.Person);
+    }
     // resident
     public Person(long id, String firstName, String lastName, int apartmentNumber) {
         this.id = id;
@@ -45,7 +52,7 @@ public class Person {
         this.persons.add(PersonType.Employee);
     }
 
-    public double getRentCosts() throws Exception {
+    public double getRentCosts() {
         double rentCosts = 500;
 
         if (persons.contains(PersonType.Employee) && persons.contains(PersonType.Resident)){
@@ -90,24 +97,36 @@ public class Person {
         }
         this.lastName = lastName;
     }
-    public int getApartmentNumber() {
+    public int getApartmentNumber() throws Exception {
+        if (!persons.contains(PersonType.Resident)){
+            throw new Exception("Person is not resident to get apartment number");
+        }
         return apartmentNumber;
     }
 
-    public void setApartmentNumber(int apartmentNumber) {
+    public void setApartmentNumber(int apartmentNumber) throws Exception {
         if (apartmentNumber <=0) {
             throw new IllegalArgumentException("Apartment number can't be smaller or be 0");
+        }
+        if (!persons.contains(PersonType.Resident)){
+            throw new Exception("Person is not resident to get apartment number");
         }
         this.apartmentNumber = apartmentNumber;
     }
 
-    public String getProfession() {
+    public String getProfession() throws Exception {
+        if (!persons.contains(PersonType.Employee)){
+            throw new Exception("Person is not employee to get data of profession");
+        }
         return profession;
     }
 
-    public void setProfession(String profession) {
+    public void setProfession(String profession) throws Exception {
         if (profession == null || profession.trim().equals("")) {
             throw new IllegalArgumentException("Profession cannot be null or empty.");
+        }
+        if (!persons.contains(PersonType.Employee)){
+            throw new Exception("Person is not employee to get data of profession");
         }
         this.profession = profession;
     }

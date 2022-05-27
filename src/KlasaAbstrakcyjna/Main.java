@@ -2,7 +2,7 @@ package KlasaAbstrakcyjna;
 
 public class Main {
     public static void main(String[] args) {
-        //TODO: add validation in setters
+
         Person g1 = new Gardener(1,"Mad", "Dik" ,50);
         System.out.println(g1);
         System.out.println("salary: "+g1.getSalary() + "\n");

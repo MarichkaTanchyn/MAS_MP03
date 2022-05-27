@@ -15,7 +15,7 @@ public abstract class House {
     private LocalDateTime dateOfStartBuilding;
     private HouseAddress houseAddress;
     private double area;
-    private static Set<House> houses = new HashSet<>();//ekstensja
+    private static Set<House> houses = new HashSet<>();
 
 
     public House(long id, String name, LocalDateTime dateOfStartBuilding, HouseAddress houseAddress, double area) {
@@ -71,25 +71,6 @@ public abstract class House {
                 .collect(Collectors.toList());
     }
 
-// ekstensja trwala save & load
-    public static boolean save(String path) {
-        try (ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(path))) {
-            os.writeObject(houses);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
-    }
-
-    public static void load(String path) {
-        try (ObjectInputStream is = new ObjectInputStream(new FileInputStream(path))) {
-            Set<House> loadedHouses = (Set<House>) is.readObject();
-            setHouses(loadedHouses);
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
 
     //Getters
     public long  getId() {
